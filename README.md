@@ -10,8 +10,18 @@ Basic online forum made with Django for the 2020 PennApps Development Team Appli
 It's a pretty static site right now, so there aren't any known bugs
 ## Core Functionalities Completed
 - Text posts are visible
-- Nothing else yet. We're just getting started, bucko
+- User login/logout
 ## Additional Challenges Finished
 - It's styled up nice with html/css using Bootstrap, but it's not really my own styling yet, since I was following Corey Schafer's tutorial
+## Core Functionalities to be Completed
+- New user registration
+- Restricting post viewing to authenticated users
+- Build out the post model and database queries
+## Additional Challenges to be Completed
+- Style all of the pages using CSS
+- Cloud hosting
+- Post liking system
+- Mandatory email verification
+- Post commenting
 ## General Thoughts / Feedback on the Assignment
 I can't give feedback until this is finished!
