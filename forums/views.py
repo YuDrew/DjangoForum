@@ -34,8 +34,13 @@ def home(request):
 	}
     return render(request, 'forums/home.html', context)
 
+@login_required()
+def account(request):
+    return render(request, 'forums/account.html', {'title': 'Account'})
+
 def about(request):
     return render(request, 'forums/about.html', {'title': 'About'})
+
 
 def register(request):
 	if request.method == "POST":
