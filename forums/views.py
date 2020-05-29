@@ -72,3 +72,7 @@ def register(request):
 		else:
 			for msg in form.error_messages:
 				messages.error(request, f"{msg}: {form.error_messages[msg]}")
+
+			return render(request, 'forums/register.html', context={'form':form})
+	form = NewUserForm
+	return render(request, 'forums/register.html', context={'form':form})
