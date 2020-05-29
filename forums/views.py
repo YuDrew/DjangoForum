@@ -51,7 +51,7 @@ def register(request):
 			messages.success(request, f"New Account Created: {username}")
 			login(request, user)
 			messages.info(request, f"You are now logged in as {username}")
-			return redirect(reverse('forums-home'))
+			return redirect('forums:home')
 		else:
 			for msg in form.error_messages:
 				messages.error(request, f"{msg}: {form.error_messages[msg]}")
@@ -70,7 +70,7 @@ def login_request(request):
 			if user is not None:
 				login(request, user)
 				messages.info(request, f"You are now logged in as {username}")
-				return redirect(reverse('forums-home'))
+				return redirect('forums:home')
 			else:
 				messages.error(request, "Invalid username or password")
 		else:
@@ -81,4 +81,4 @@ def login_request(request):
 def logout_request(request):
 	logout(request)
 	messages.info(request, "Logged out successfully!")
-	return redirect(reverse('forums-home'))
+	return redirect('forums:home')

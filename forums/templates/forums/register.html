@@ -2,9 +2,9 @@
 {% block content %}
     <div class="container">
         <form method="POST">
-        	{% csrf_token %}
-        	{{form.as_p}}
-            	<button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Register</button>
+    	{% csrf_token %}
+    	{{form.as_p}}
+        	<button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Register</button>
         </form>
         Already have an account? <a href="/login" target="blank"><strong>login </strong></a> instead!
     </div>

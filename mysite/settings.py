@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Login Features
-LOGIN_URL='login'
+LOGIN_URL='forums:login'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
