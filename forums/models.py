@@ -2,12 +2,29 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+
+#osts = [
+#    {
+#        'author': 'TestPerson',
+#        'title': "Forum Post 1",
+#        'content': "Wow it's the first post",
+#        'date_posted': 'May 31, 2020'
+#    },
+#    {
+#        'author': 'TestPerson',
+#        'title': "Forum Post 1",
+#        'content': "Wow it's the first post",
+#        'date_posted': 'May 31, 2020'
+#    }
+#]
 
 class Post(models.Model):
     title = models.CharField(max_length=70)
-    post_text = models.CharField(max_length=280)
-    pub_date = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=280)
+    image = models.ImageField(upload_to='images/', blank=True)
+    date_posted = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title

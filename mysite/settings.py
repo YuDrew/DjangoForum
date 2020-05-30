@@ -31,13 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'forums.apps.ForumsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'forums.apps.ForumsConfig', #new
 ]
 
 MIDDLEWARE = [
@@ -100,8 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Login Features
-LOGIN_URL='forums:login'
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -120,3 +118,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# PROJECT SPECIFIC DEFINITIONS
+# Login Features
+LOGIN_URL='forums:login'
+
+# Media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

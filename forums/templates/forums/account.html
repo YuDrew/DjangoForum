@@ -1,4 +1,8 @@
 {% extends "forums/base.html" %}
 {% block content %}
-	<h1> Account Page </h1>
+	{% if user.is_authenticated %}
+		<h1> {{ user.get_username }}'s page </h1>
+	{% else %}
+		<h1> This shouldn't be possible </h1>
+	{% endif %}
 {% endblock content %}
