@@ -8,6 +8,9 @@ from .forms import NewUserForm, PostForm
 from django.contrib.auth.decorators import login_required
 from .models import Post
 
+def about(request):
+    return render(request, 'forums/about.html', {'title': 'About'})
+
 @login_required()
 def home(request):
 	context = {
@@ -19,14 +22,14 @@ def home(request):
 def account(request):
 	return render(request, 'forums/account.html', {'title': 'Account'})
 
-def about(request):
-    return render(request, 'forums/about.html', {'title': 'About'})
-
+@login_required
 def create_post(request):
 	if request.method == "POST":
 		form = PostForm(request.POST)
 		if form.is_valid():
-			post = form.save()
+			post = form.save(commit=False)
+			post.author = request.user
+			post.save()
 			return redirect('forums:home')
 		else:
 			for msg in form.error_messages:
