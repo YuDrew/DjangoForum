@@ -4,21 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib import admin
 from django.contrib.auth import get_user_model
 
-#osts = [
-#    {
-#        'author': 'TestPerson',
-#        'title': "Forum Post 1",
-#        'content': "Wow it's the first post",
-#        'date_posted': 'May 31, 2020'
-#    },
-#    {
-#        'author': 'TestPerson',
-#        'title': "Forum Post 1",
-#        'content': "Wow it's the first post",
-#        'date_posted': 'May 31, 2020'
-#    }
-#]
-
 class Post(models.Model):
     title = models.CharField(max_length=70)
     content = models.CharField(max_length=280)

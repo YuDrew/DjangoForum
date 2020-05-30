@@ -7,6 +7,7 @@ from django.urls import reverse
 from .forms import NewUserForm, PostForm
 from django.contrib.auth.decorators import login_required
 from .models import Post
+from django.utils import timezone
 
 def about(request):
     return render(request, 'forums/about.html', {'title': 'About'})
