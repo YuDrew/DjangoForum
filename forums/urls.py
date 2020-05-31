@@ -18,7 +18,7 @@ urlpatterns = [
     path("login/", views.login_request, name="login"),
     path("register/", views.register, name="register"),
     path("account/", views.account, name="account"),
-    path("post/", views.create_post, name="create_post"),
     path("user/<str:username>", views.user_posts.as_view(), name="user_posts"),
+    path("posts/create", views.create_post, name="create_post"),
+    path("posts/<int:pk>/delete", views.delete_post.as_view(), name="delete_post"),
 ]
-

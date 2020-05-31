@@ -8,13 +8,15 @@ from .forms import NewUserForm, PostForm
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from django.utils import timezone
-from django.views.generic import ListView
+from django.views.generic import ListView, DeleteView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 
+# General Site Views
 def about(request):
     return render(request, 'forums/about.html', {'title': 'About'})
 
+# Post Viewing Views
 @login_required()
 def home(request):
 	context = {
@@ -27,7 +29,7 @@ def account(request):
 	context = {
 		'posts': Post.objects.filter(author=request.user)
 	}
-	return render(request, 'forums/home.html', context= context)
+	return render(request, 'forums/account.html', context= context)
 
 @method_decorator(login_required, name='dispatch')
 class user_posts(ListView):
@@ -39,6 +41,7 @@ class user_posts(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return Post.objects.filter(author=user).order_by('-date_posted')
 
+# Creating and Deleting Views
 @login_required
 def create_post(request):
 	if request.method == "POST":
@@ -56,6 +59,19 @@ def create_post(request):
 	form = PostForm
 	return render(request, 'forums/create_post.html', context={'form':form})
 
+@method_decorator(login_required, name='dispatch')
+class delete_post(DeleteView):
+	model = Post
+	success_url = '/'
+
+	def test_func(self):
+		post = self.get_object()
+		if self.request.user == post.author:
+			return True
+		else:
+			return False
+
+# Auth Views
 def register(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)

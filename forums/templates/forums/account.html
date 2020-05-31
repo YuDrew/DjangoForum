@@ -1,8 +1,28 @@
 {% extends "forums/base.html" %}
 {% block content %}
 	{% if user.is_authenticated %}
-		<h1> {{ user.get_username }}'s page </h1>
+		<h1> {{ user.username }}'s Account </h1>
+		<img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width=250/>
+		{% for post in posts %}
+			<article class="media content-section">
+			  <div class="media-body">
+			    <div class="article-metadata">
+			      <a class="mr-2" href="{% url 'forums:user_posts' post.author.username %}">{{ post.author }}</a>
+			      <small class="text-muted">{{ post.date_posted }}</small>
+			      <a href="{% url 'forums:delete_post' post.pk %}" > 
+			      	<mark style="text-align:right;"> Delete Post</mark>
+			      </a>
+			    </div>
+			    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+			    <p class="article-content">{{ post.content }}</p>
+			    {% if post.image.avatar %}
+			    	<img src="{{ post.image.url}}" alt="{{ post.title }}">
+			    {% endif %}
+			  </div>
+			</article>
+		{% endfor%}
 	{% else %}
-		<h1> This shouldn't be possible </h1>
+		<h1> This shouldn't be possible. Go home. </h1>
 	{% endif %}
+
 {% endblock content %}

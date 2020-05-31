@@ -1,0 +1,11 @@
+{% extends "forums/base.html" %}
+{% block content %}
+	{% if object.author == user %}
+		<form method="post">{% csrf_token %}
+			<p>Are you sure you want to delete "{{ object }}"?</p>
+			<input type="submit" value="Confirm">
+		</form>
+	{% else %}
+		<h1> You can't delete someone else's posts. </h1>
+	{% endif %}
+{% endblock content %}

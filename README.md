@@ -7,24 +7,20 @@ Basic online forum made with Django for the 2020 PennApps Development Team Appli
 4. Open up localhost:8000 in the browser of your choice
 5. Explore the wild Django forum (though there's not much to explore)
 ## Core Functionalities Completed 💪
-- Text posts are visible
 - User registration/login/logout
-- Restricting post viewing to authenticated users
-- Users can create new posts
-- Users can see who posted what
-- Users can view all of their specific posts
+- Post viewing restricted to authenticated users
+- Users can create new posts and delete their own posts
+- Users can see all posts made by other users
 ## Additional Challenges Finished 🙌
-- A bit of html/css styling
-- Users can view all posts by any other user
-## Core Functionalities to be Completed 🔨
-- Users can delete their posts
+- A bit of html/css styling, largely pulling from Corey Schafer tutorials
+- Users can view all posts made by a specific user
 ## Additional Challenges to be Completed 🛠
-- Style all of the pages using CSS
 - Cloud hosting
 - Post liking system
 - Mandatory email verification
 - Post commenting
+- View posted images
 ## Known bugs 🕷
-- Posts cannot properly display images and assign blank images to posts without images
+- Posts can include images, but images aren't properly displayed
 ## General Thoughts / Feedback on the Assignment 💭
-I can't give feedback until this is finished!
+- Was a nice escape from Netflix during quarantine
