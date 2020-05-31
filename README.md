@@ -11,12 +11,13 @@ Basic online forum made with Django for the 2020 PennApps Development Team Appli
 - User registration/login/logout
 - Restricting post viewing to authenticated users
 - Users can create new posts
-## Additional Challenges Finished 🙌
-- A bit of html/css styling
-## Core Functionalities to be Completed 🔨
-- Users can delete their posts
 - Users can see who posted what
 - Users can view all of their specific posts
+## Additional Challenges Finished 🙌
+- A bit of html/css styling
+- Users can view all posts by any other user
+## Core Functionalities to be Completed 🔨
+- Users can delete their posts
 ## Additional Challenges to be Completed 🛠
 - Style all of the pages using CSS
 - Cloud hosting
@@ -24,8 +25,6 @@ Basic online forum made with Django for the 2020 PennApps Development Team Appli
 - Mandatory email verification
 - Post commenting
 ## Known bugs 🕷
-- Posts don't display who posted
-- Users can assign other users as authors to posts
 - Posts cannot properly display images and assign blank images to posts without images
 ## General Thoughts / Feedback on the Assignment 💭
 I can't give feedback until this is finished!
