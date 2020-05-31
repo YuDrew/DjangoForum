@@ -1,0 +1,24 @@
+{% extends "forums/base.html" %}
+{% block content %}
+	{% if user.is_authenticated %}
+		<h1> {{ view.kwargs.username }}'s page </h1>
+		{% for post in posts %}
+			<article class="media content-section">
+			  <div class="media-body">
+			    <div class="article-metadata">
+			      <a class="mr-2" href="{% url 'forums:user_posts' post.author.username %}">{{ post.author.username }} </a>
+			      <small class="text-muted">{{ post.date_posted }}</small>
+			    </div>
+			    <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+			    <p class="article-content">{{ post.content }}</p>
+			    <! --- img src="http://i.stack.imgur.com/SBv4T.gif" alt="this slowpoke moves"  width=250/--->
+			    {% if post.image.avatar %}
+			    	<img src="{{ post.image.url }}" alt="{{ post.title }}">
+			    {% endif %}
+			  </div>
+			</article>
+		{% endfor%}
+	{% else %}
+		<h1> This shouldn't be possible </h1>
+	{% endif %}
+{% endblock content %}

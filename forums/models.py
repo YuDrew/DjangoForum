@@ -9,13 +9,7 @@ class Post(models.Model):
     content = models.CharField(max_length=280)
     image = models.ImageField(upload_to='images/', blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name = 'posts')
+
     def __str__(self):
         return self.title
-
-class PostAdmin(admin.ModelAdmin):
-    fields = ('title','post_text','pub_date',)
-    def save_model(self, request, instanceli, form, change):
-        obj.author = request.user
-        obj.save()

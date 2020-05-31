@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -8,6 +8,9 @@ from .forms import NewUserForm, PostForm
 from django.contrib.auth.decorators import login_required
 from .models import Post
 from django.utils import timezone
+from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 
 def about(request):
     return render(request, 'forums/about.html', {'title': 'About'})
@@ -15,18 +18,31 @@ def about(request):
 @login_required()
 def home(request):
 	context = {
-		'posts': list(Post.objects.values())
+		'posts': Post.objects.all()
 	}
 	return render(request, 'forums/home.html', context= context)
 
 @login_required()
 def account(request):
-	return render(request, 'forums/account.html', {'title': 'Account'})
+	context = {
+		'posts': Post.objects.filter(author=request.user)
+	}
+	return render(request, 'forums/home.html', context= context)
+
+@method_decorator(login_required, name='dispatch')
+class user_posts(ListView):
+	model = Post
+	template_name = 'forums/user_posts.html'
+	context_object_name = 'posts'
+
+	def get_queryset(self):
+		user = get_object_or_404(User, username=self.kwargs.get('username'))
+		return Post.objects.filter(author=user).order_by('-date_posted')
 
 @login_required
 def create_post(request):
 	if request.method == "POST":
-		form = PostForm(request.POST)
+		form = PostForm(request.POST, request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
 			post.author = request.user
