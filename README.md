@@ -68,6 +68,7 @@ From the line "starting development server at...", copy the url into the browser
 - A bit of html/css styling, largely pulling from Corey Schafer tutorials
 - Users can view all posts made by any specific user
 - Users can upload images with their posts
+- Image hosting on AWS S3 servers
 ## Additional Challenges to be Completed Some Day in the Future 🛠
 - Post liking system
 - Mandatory email verification
