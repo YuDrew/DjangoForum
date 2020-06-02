@@ -48,7 +48,13 @@ def create_post(request):
 		form = PostForm(request.POST, request.FILES)
 		if form.is_valid():
 			post = form.save(commit=False)
+			print(type(post))
 			post.author = request.user
+			print(len(request.FILES.keys()))
+			if 'image' in request.FILES.keys():
+				post.image = request.FILES['image']
+			else: 
+				print("WHAT")
 			post.save()
 			return redirect('forums:home')
 		else:
@@ -56,13 +62,14 @@ def create_post(request):
 				messages.error(request, f"{msg}: {form.error_messages[msg]}")
 
 			return render(request, 'forums/create_post.html', context={'form':form})
-	form = PostForm
+	
+	form = PostForm()
 	return render(request, 'forums/create_post.html', context={'form':form})
 
 @method_decorator(login_required, name='dispatch')
 class delete_post(DeleteView):
 	model = Post
-	success_url = '/'
+	success_url = '/account/'
 
 	def test_func(self):
 		post = self.get_object()

@@ -1,5 +1,6 @@
 {% extends "forums/base.html" %}
 {% block content %}
+	<h1> Confirm Delete </h1>
 	{% if object.author == user %}
 		<form method="post">{% csrf_token %}
 			<p>Are you sure you want to delete "{{ object }}"?</p>
